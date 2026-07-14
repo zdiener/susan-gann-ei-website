@@ -223,6 +223,14 @@ a  { color: var(--clay-dark); }
   color: #F7F1E7; max-width: 40ch; margin-bottom: 1.8rem;
   text-shadow: 0 1px 12px rgba(30,24,18,.4);
 }
+.hero-actions { display: flex; flex-wrap: wrap; gap: .8rem; }
+.btn-hero-ghost {
+  background: rgba(255, 255, 255, .1); color: #fff;
+  border-color: rgba(255, 255, 255, .75);
+  -webkit-backdrop-filter: blur(2px); backdrop-filter: blur(2px);
+  box-shadow: none;
+}
+.btn-hero-ghost:hover, .btn-hero-ghost:focus-visible { background: #fff; color: var(--sage-dark); border-color: #fff; }
 
 /* =========================================================
    SECTIONS
@@ -318,19 +326,15 @@ a  { color: var(--clay-dark); }
 @media (min-width: 820px) { .about-grid { grid-template-columns: 320px 1fr; } }
 .about-media { position: relative; }
 @media (min-width: 820px) { .about-media { position: sticky; top: calc(var(--header-h) + 24px); } }
-.portrait-ph {
+.portrait {
+  width: 100%;
   aspect-ratio: 4 / 5;
+  object-fit: cover;
+  object-position: 50% 26%;
   border-radius: var(--radius);
-  background:
-    radial-gradient(120% 90% at 30% 15%, rgba(255,255,255,.5), transparent 55%),
-    linear-gradient(150deg, var(--sage-light), var(--clay-soft));
-  border: 1px solid var(--line);
+  border: 5px solid var(--card);
   box-shadow: var(--shadow);
-  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: .8rem;
-  color: rgba(58,53,47,.55);
-  text-align: center;
 }
-.portrait-ph span { font-size: .85rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
 
 /* Offerings */
 .cards { display: grid; grid-template-columns: 1fr; gap: 1.4rem; }
@@ -346,8 +350,22 @@ a  { color: var(--clay-dark); }
   width: 60px; height: 60px; border-radius: 16px; margin-bottom: 1.1rem;
   background: rgba(110, 132, 103, .14); color: var(--sage-dark);
 }
-.card h3 { margin-bottom: .5rem; }
-.card p { margin-bottom: 0; color: var(--ink-soft); }
+.card { display: flex; flex-direction: column; }
+.card h3 { margin-bottom: .35rem; }
+.card p { color: var(--ink-soft); }
+.card-sub {
+  font-family: var(--serif); font-style: italic; font-size: 1.02rem;
+  color: var(--sage-dark); margin-bottom: .9rem;
+}
+.card-link {
+  margin-top: auto; align-self: flex-start;
+  font-weight: 700; font-size: .95rem; text-decoration: none;
+  color: var(--clay-dark);
+  transition: color .2s var(--ease);
+}
+.card-link span { display: inline-block; transition: transform .2s var(--ease); }
+.card-link:hover, .card-link:focus-visible { color: var(--clay); }
+.card-link:hover span, .card-link:focus-visible span { transform: translateX(4px); }
 .offerings-cta {
   margin-top: 2.6rem; text-align: center;
   display: flex; flex-direction: column; align-items: center; gap: 1.1rem;
@@ -356,26 +374,45 @@ a  { color: var(--clay-dark); }
 
 /* Testimonials */
 .visually-centered { text-align: center; }
+.quotes-grid {
+  display: grid; grid-template-columns: 1fr; gap: 1.6rem;
+  margin-top: 2.6rem; align-items: start;
+}
+@media (min-width: 900px) { .quotes-grid { grid-template-columns: repeat(3, 1fr); gap: 1.5rem; } }
 .quote {
-  position: relative; margin: 2.4rem 0 0;
+  position: relative; margin: 0;
+  display: flex; flex-direction: column; height: 100%;
   background: var(--card); border: 1px solid var(--line);
   border-radius: var(--radius); box-shadow: var(--shadow-soft);
-  padding: clamp(2.2rem, 5vw, 3.4rem);
+  padding: clamp(1.8rem, 3.5vw, 2.4rem);
 }
 .quote-mark {
-  position: absolute; top: -.35em; left: .3em;
-  font-family: var(--serif); font-size: 6rem; line-height: 1;
+  position: absolute; top: -.2em; left: .28em;
+  font-family: var(--serif); font-size: 4.4rem; line-height: 1;
   color: var(--clay-soft); pointer-events: none; user-select: none;
 }
 .quote blockquote { margin: 0; position: relative; }
 .quote blockquote p {
   font-family: var(--serif); font-weight: 400;
-  font-size: clamp(1.15rem, 1rem + 0.7vw, 1.5rem); line-height: 1.55;
+  font-size: clamp(1.02rem, 0.96rem + 0.35vw, 1.18rem); line-height: 1.55;
   color: var(--ink); margin: 0;
 }
-.quote figcaption { margin-top: 1.6rem; display: flex; flex-direction: column; }
+.quote figcaption { margin-top: auto; padding-top: 1.2rem; border-top: 1px solid var(--line); display: flex; flex-direction: column; }
+.quote blockquote { margin-bottom: 1.4rem; }
 .quote-name { font-weight: 700; color: var(--sage-dark); font-size: 1.05rem; }
 .quote-role { color: var(--ink-faint); font-size: .95rem; }
+
+/* Descriptor pills */
+.descriptors {
+  list-style: none; margin: 2.4rem 0 0; padding: 0;
+  display: flex; flex-wrap: wrap; justify-content: center; gap: .6rem;
+}
+.descriptors li {
+  font-family: var(--sans); font-weight: 600; font-size: .9rem;
+  color: var(--sage-dark); background: rgba(110, 132, 103, .12);
+  border: 1px solid var(--sage-light);
+  padding: .4rem 1rem; border-radius: 100px;
+}
 
 /* Contact */
 .contact {

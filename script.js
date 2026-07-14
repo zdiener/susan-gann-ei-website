@@ -35,6 +35,12 @@
       document.addEventListener("keydown", function (e) {
         if (e.key === "Escape") { closeNav(); }
       });
+      // Close on tap/click outside the open menu (but not on the toggle itself)
+      document.addEventListener("click", function (e) {
+        if (!nav.classList.contains("open")) return;
+        if (nav.contains(e.target) || toggle.contains(e.target)) return;
+        closeNav();
+      });
     }
 
     /* ---------- Scroll-reveal on section entry ---------- */
