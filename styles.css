@@ -402,18 +402,6 @@ a  { color: var(--clay-dark); }
 .quote-name { font-weight: 700; color: var(--sage-dark); font-size: 1.05rem; }
 .quote-role { color: var(--ink-faint); font-size: .95rem; }
 
-/* Descriptor pills */
-.descriptors {
-  list-style: none; margin: 2.4rem 0 0; padding: 0;
-  display: flex; flex-wrap: wrap; justify-content: center; gap: .6rem;
-}
-.descriptors li {
-  font-family: var(--sans); font-weight: 600; font-size: .9rem;
-  color: var(--sage-dark); background: rgba(110, 132, 103, .12);
-  border: 1px solid var(--sage-light);
-  padding: .4rem 1rem; border-radius: 100px;
-}
-
 /* Contact */
 .contact {
   position: relative; color: #fff; text-align: center;
