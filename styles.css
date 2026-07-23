@@ -292,6 +292,7 @@ a  { color: var(--clay-dark); }
 /* How it's taught — timeline */
 .how-layout { display: grid; grid-template-columns: 1fr; gap: clamp(2rem, 5vw, 3.5rem); align-items: start; }
 @media (min-width: 940px) { .how-layout { grid-template-columns: 1.55fr 1fr; } }
+.how-main { min-width: 0; }
 
 .timeline { list-style: none; margin: 0; padding: 0; position: relative; }
 .timeline::before {
@@ -318,6 +319,7 @@ a  { color: var(--clay-dark); }
   cursor: pointer; list-style: none; padding: .3rem 0;
 }
 .accordion-summary::-webkit-details-marker { display: none; }
+.accordion-summary::marker { content: ""; }
 .accordion-summary::after {
   content: ""; flex: 0 0 auto; width: 10px; height: 10px;
   border-right: 2px solid var(--sage); border-bottom: 2px solid var(--sage);
