@@ -251,14 +251,6 @@ a  { color: var(--clay-dark); }
 /* Intro */
 .intro { padding-top: clamp(2.6rem, 5vw, 4rem); }
 
-/* Split (Why Preschoolers) */
-.split { display: grid; grid-template-columns: 1fr; gap: clamp(2rem, 5vw, 4rem); align-items: center; }
-.split-media img { border-radius: var(--radius); box-shadow: var(--shadow); width: 100%; object-fit: cover; }
-@media (min-width: 860px) {
-  .split { grid-template-columns: 1.05fr 0.95fr; }
-  .split-media img { aspect-ratio: 4 / 3.4; }
-}
-
 /* EI section */
 .ei-grid { display: grid; grid-template-columns: 1fr; gap: 2rem; align-items: center; margin-bottom: 2.5rem; }
 @media (min-width: 820px) { .ei-grid { grid-template-columns: 1.6fr 1fr; } }
@@ -283,63 +275,6 @@ a  { color: var(--clay-dark); }
 }
 .callout-card h3 { color: var(--clay-dark); margin-bottom: .8rem; }
 .callout-card p:last-child { margin-bottom: 0; }
-
-/* How it's taught — timeline */
-.how-layout { display: grid; grid-template-columns: 1fr; gap: clamp(2rem, 5vw, 3.5rem); align-items: start; }
-@media (min-width: 940px) { .how-layout { grid-template-columns: 1.55fr 1fr; } }
-.how-main { min-width: 0; }
-
-.timeline-label {
-  font-family: var(--sans); font-weight: 700; font-size: .82rem;
-  text-transform: uppercase; letter-spacing: .14em; color: var(--sage-dark);
-  margin: 0 0 1.1rem;
-}
-.timeline { list-style: none; margin: 0; padding: 0; position: relative; }
-.timeline::before {
-  content: ""; position: absolute; left: 21px; top: 8px; bottom: 8px; width: 2px;
-  background: linear-gradient(var(--sage-light), var(--clay-soft));
-}
-.timeline-step { position: relative; padding: 0 0 2.2rem 3.6rem; }
-.timeline-step:last-child { padding-bottom: 0; }
-.timeline-num {
-  position: absolute; left: 0; top: 0;
-  width: 44px; height: 44px; border-radius: 50%;
-  display: flex; align-items: center; justify-content: center;
-  font-family: var(--serif); font-weight: 600; font-size: 1.2rem;
-  background: var(--card); color: var(--sage-dark);
-  border: 2px solid var(--sage); box-shadow: var(--shadow-soft);
-  z-index: 1;
-}
-.timeline-body h3 { margin-bottom: 0; color: var(--ink); }
-.timeline-body p:last-child { margin-bottom: 0; }
-
-/* Accordion (native <details>/<summary>) */
-.accordion-summary {
-  display: flex; align-items: center; justify-content: space-between; gap: 1rem;
-  cursor: pointer; list-style: none; padding: .3rem 0;
-}
-.accordion-summary::-webkit-details-marker { display: none; }
-.accordion-summary::marker { content: ""; }
-.accordion-summary::after {
-  content: ""; flex: 0 0 auto; width: 10px; height: 10px;
-  border-right: 2px solid var(--sage); border-bottom: 2px solid var(--sage);
-  transform: rotate(-45deg); transition: transform .25s ease;
-  margin-right: .3rem;
-}
-.accordion[open] > .accordion-summary::after { transform: rotate(45deg); }
-.accordion-summary:hover h3, .accordion-summary:focus-visible h3 { color: var(--sage-dark); }
-.accordion-summary:focus-visible { outline: 2px solid var(--sage); outline-offset: 4px; }
-.accordion-content { padding-top: .6rem; }
-.accordion-content p:last-child { margin-bottom: 0; }
-
-.how-aside { position: relative; }
-@media (min-width: 940px) { .how-aside { position: sticky; top: calc(var(--header-h) + 24px); } }
-.how-aside figure { margin: 0; }
-.how-aside img { border-radius: var(--radius); box-shadow: var(--shadow); width: 100%; }
-.how-aside figcaption {
-  margin-top: 1rem; font-family: var(--serif); font-style: italic;
-  font-size: 1.06rem; color: var(--sage-dark); line-height: 1.5; text-align: center;
-}
 
 /* About */
 .about-grid { display: grid; grid-template-columns: 1fr; gap: clamp(1.8rem, 4vw, 3.2rem); align-items: start; }
@@ -377,15 +312,6 @@ a  { color: var(--clay-dark); }
   font-family: var(--serif); font-style: italic; font-size: 1.02rem;
   color: var(--sage-dark); margin-bottom: .9rem;
 }
-.card-link {
-  margin-top: auto; align-self: flex-start;
-  font-weight: 700; font-size: .95rem; text-decoration: none;
-  color: var(--clay-dark);
-  transition: color .2s var(--ease);
-}
-.card-link span { display: inline-block; transition: transform .2s var(--ease); }
-.card-link:hover, .card-link:focus-visible { color: var(--clay); }
-.card-link:hover span, .card-link:focus-visible span { transform: translateX(4px); }
 .offerings-cta {
   margin-top: 2.6rem; text-align: center;
   display: flex; flex-direction: column; align-items: center; gap: 1.1rem;
@@ -458,3 +384,85 @@ a  { color: var(--clay-dark); }
   .hero-media { transform: none; }
   * { animation-duration: .001ms !important; transition-duration: .001ms !important; }
 }
+
+/* =========================================================
+   TRUST BAR (credibility, above the fold)
+   ========================================================= */
+.trust-bar {
+  background: var(--card); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line);
+  padding: 1rem 0;
+}
+.trust-bar-inner {
+  width: min(100% - 2.5rem, var(--wrap)); margin-inline: auto;
+  display: flex; flex-wrap: wrap; justify-content: center; gap: .6rem 1.6rem;
+  text-align: center;
+}
+.trust-item {
+  display: flex; align-items: center; gap: .5rem;
+  font-family: var(--sans); font-weight: 600; font-size: .88rem; color: var(--ink-soft);
+}
+.trust-item svg { flex: 0 0 auto; color: var(--sage-dark); }
+
+/* =========================================================
+   LEARN MORE / DETAILS (native <details>, no JS)
+   ========================================================= */
+.expand { margin-top: .7rem; }
+.expand-summary {
+  list-style: none; cursor: pointer; display: inline-flex; align-items: center; gap: .4rem;
+  font-family: var(--sans); font-weight: 700; font-size: .9rem; color: var(--sage-dark);
+  padding: .15rem 0;
+}
+.expand-summary::-webkit-details-marker { display: none; }
+.expand-summary::marker { content: ""; }
+.expand-summary:hover, .expand-summary:focus-visible { color: var(--sage); }
+.expand-summary:focus-visible { outline: 2px solid var(--sage); outline-offset: 4px; border-radius: 4px; }
+.expand-label-open { display: none; }
+.expand[open] > .expand-summary .expand-label-closed { display: none; }
+.expand[open] > .expand-summary .expand-label-open { display: inline; }
+.expand-chevron {
+  width: 8px; height: 8px; flex: 0 0 auto;
+  border-right: 2px solid currentColor; border-bottom: 2px solid currentColor;
+  transform: rotate(-45deg); transition: transform .2s ease;
+}
+.expand[open] > .expand-summary .expand-chevron { transform: rotate(45deg); }
+.expand-content { padding-top: .7rem; }
+.expand-content p { max-width: 62ch; }
+.expand-content p + p { margin-top: 1rem; }
+.quote .expand-summary { margin-top: .4rem; }
+
+/* EQ quick-signs list */
+.eq-signs { list-style: none; margin: 1.2rem 0 0; padding: 0; display: grid; gap: .7rem; }
+.eq-signs li {
+  display: flex; align-items: baseline; gap: .6rem;
+  font-family: var(--sans); font-size: 1rem; color: var(--ink);
+}
+.eq-signs strong { color: var(--sage-dark); flex: 0 0 auto; }
+
+/* 3-step "how it's taught" cards */
+.steps { display: grid; grid-template-columns: 1fr; gap: 1.4rem; margin-top: 2rem; }
+@media (min-width: 760px) { .steps { grid-template-columns: repeat(3, 1fr); } }
+.step-card {
+  background: var(--card); border: 1px solid var(--line); border-radius: var(--radius);
+  padding: 1.6rem; box-shadow: var(--shadow-soft);
+}
+.step-num {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 34px; height: 34px; border-radius: 50%; margin-bottom: .9rem;
+  background: rgba(110,132,103,.14); color: var(--sage-dark);
+  font-family: var(--serif); font-weight: 600;
+}
+.step-card h3 { margin-bottom: .5rem; }
+.step-card > p { color: var(--ink-soft); }
+
+/* About credential pills */
+.credentials { list-style: none; margin: 1.1rem 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: .5rem; }
+.credentials li {
+  font-family: var(--sans); font-weight: 600; font-size: .84rem;
+  color: var(--clay-dark); background: rgba(158,82,50,.1);
+  border: 1px solid var(--clay-soft); padding: .35rem .85rem; border-radius: 100px;
+}
+
+/* Footer credit */
+.footer-credit { color: #8F887A; font-size: .82rem; margin: .4rem 0 0; }
+.footer-credit a { color: #B7AF9F; text-decoration: underline; text-underline-offset: 2px; }
+.footer-credit a:hover, .footer-credit a:focus-visible { color: #fff; }
