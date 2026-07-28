@@ -394,12 +394,13 @@ a  { color: var(--clay-dark); }
 }
 .trust-bar-inner {
   width: min(100% - 2.5rem, var(--wrap)); margin-inline: auto;
-  display: flex; flex-wrap: wrap; justify-content: center; gap: .6rem 1.6rem;
   text-align: center;
 }
 .trust-item {
-  display: flex; align-items: center; gap: .5rem;
-  font-family: var(--sans); font-weight: 600; font-size: .88rem; color: var(--ink-soft);
+  display: inline-flex; align-items: center; gap: .5rem;
+  margin: .4rem .8rem;
+  font-family: var(--sans); font-weight: 700; font-size: .95rem; color: var(--ink);
+  vertical-align: middle;
 }
 .trust-item svg { flex: 0 0 auto; color: var(--sage-dark); }
 
